@@ -1,0 +1,15 @@
+1. Elastic Block Storage (EBS) is a great storage option for applications that require a heavy amount of read/write operations.  EBS volumes are not standalone storage devices, and can only be used when attached to EC2 instances.  EBS volumes are not easily scalable so users should know ahead of time what the demands of their applications will be.  Amazon Simple Storage Service (S3), on the other hand, is a great option for storing data that does not require many read/write operations.  It is a highly scalable service with a high degree of data durability.  The process of accessing information in S3 is slower, when compared to EBS, and is best suited for storing backups, static websites, and other low IOPS objects.  
+
+2. I would consider a cloud-based model for the following reasons:
+Scalability: If the project I'm working on needs to scale beyond what I had anticipated, it's much easier to scale using cloud services than trying to purchase and set-up new physical hardware.
+Cost: Cloud services are a fraction of the cost when compared to purchasing new equipment to run more complex computations.  Why purchase new units when you can simply rent a cloud configuration for the time that you need it for?
+Collaboration: Using the cloud, all team members can be working from the same virtual machine thus eliminating the need for purchasing the same operating systems or software configurations.  One wouldn't have to worry about using different program language libraries or modules because they would be available to everyone through the  cloud. 
+Ease of use: Cloud services like AWS or Azure have tons of built-in features and pre-made templates, thus eliminating the need for undifferentiated legwork and environment set-up. 
+
+3. Reserved instances can be purchased for a set amount of time from 1-3 years.  Purchasing a reserved instance provides the purchaser a significant discount to On-Demand instance pricing.  Reserved instances can later be sold on the Reserved Instances Marketplace. Spot instances, on the other hand, are different from Reserved Instances.  Spot instances are unused EC2 instances that can be bid on in an open marketplace.  If the end-user bid exceeds the going market rate, then the Spot instance runs for the winning bidder.  Spot instances provide a significant discount to EC2 costs.  However, in order to use Spot instances the end-user must be flexible about running their applications and be able to handle interruptions.   
+
+4. Four software packages installed on UCB AMI: 
+#1. Ipython
+#2. Hadoop
+#3. Hive
+#4. Python 2.6 
