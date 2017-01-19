@@ -1,0 +1,9 @@
+#1. How many live datanodes are there?
+Answer = 1
+
+#2. How much non-DFS storage is used?
+Answer = 5.10 GB
+
+#3. How much DFS storage is used?
+Answer = 136.21 MB or 0.14%
+
