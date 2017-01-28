@@ -4,7 +4,7 @@ The \dt command generates a “List of relations” table in human readable form
 2. What is the schema for the customer table?
 See attached .png file.  Briefly though, the schema indicates that there are ten columns of varying types including INTEGER, SMALLINT, CHARACTER VARYING, BOOLEAN, DATE AND TIMESTAMP WITHOUT TIME ZONE.  There are also four Indexes on this table and a couple of Foreign-key constraints.  
 
-3. What similarities do you see in the explain plans for these 3 queries? (Projection and Projection and Selection)
+3. What similarities do you see in the explain plans for these 3 queries? (Projection and Projection & Selection)
 The main similarities between the three queries are that a Sequential Scan is used to look up the results in all three cases (no indexes are used).  Also, there is zero startup cost associated with all of the queries.  
 
 4. What is the difference between the plans for the Partitioned table and the union query? Why do you think this difference exists?
