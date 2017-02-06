@@ -1,0 +1,18 @@
+1. List the execution time of the weblog aggregation query for Hive, SparkSQL, and SparkSQL on Parquet.
+Hive: 40.771 sec
+SparkSQL: 4.776 sec (a blazing 90% reduction in processing time)
+SparkSQL on Parquet: 1.222 sec (a further 75% reudction)
+
+2. How many jobs does Hive launch? Does SparkSQL launch jobs?
+To process the query Hive launched two (2) MR jobs.
+The CLI does not explicitly state that Spark SQL launched jobs, however one can assume
+that since the query was processed at least one job was launched. It's my understanding 
+that both platforms use the MapReduce framework, but Spark is quicker because of the way it processes data in-memory as compared to Hive which stores data on disk.
+
+3. List the top 5 locations from SQL query joining weblogs_parquet and user_info:
+Hamilton 	19
+Axis	 	18
+Hazel Green	17
+La Fayette 	17
+Headland	17
+
