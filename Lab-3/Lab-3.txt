@@ -10,9 +10,9 @@ that since the query was processed at least one job was launched. It's my unders
 that both platforms use the MapReduce framework, but Spark is quicker because of the way it processes data in-memory as compared to Hive which stores data on disk.
 
 3. List the top 5 locations from SQL query joining weblogs_parquet and user_info:
-Hamilton 	19
-Axis	 	18
-Hazel Green	17
-La Fayette 	17
-Headland	17
+La Fayette    49
+Leeds         47
+Blountsville  46
+Hayden        45
+Hamilton      45
 
