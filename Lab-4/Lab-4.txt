@@ -9,6 +9,4 @@ narcTuples = narcs.map(lambda x: (x.split(",")[0], x.split(",")[1:]))
 Submission 2
 See associated .png file.
 
-Submission 3
-
 
