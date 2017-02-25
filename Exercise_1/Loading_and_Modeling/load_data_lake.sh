@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # create necessary directories
-mkdir ~/staging/exercise_1
-mkdir ~/staging/exercise_1/loading_and_modeling
-cd ~/staging/exercise_1
+mkdir /data/staging/exercise_1
+mkdir /data/staging/exercise_1/loading_and_modeling
+cd /data/staging/exercise_1
 
 # download and unzip exercise data from medicare.gov website
 URL="https://data.medicare.gov/views/bg9k-emty/files/6c902f45-e28b-42f5-9f96-ae9d1e583472?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip"
@@ -13,7 +13,6 @@ wget -O medicare_data.zip "$URL"
 unzip medicare_data.zip
 
 # remove headers and rename files to simple title
-
 tail -n +2 "Hospital General Information.csv" > loading_and_modeling/hospitals.csv
 tail -n +2 "Timely and Effective Care - Hospital.csv" > loading_and_modeling/effective_care.csv
 tail -n +2 "Readmissions and Deaths - Hospital.csv" > loading_and_modeling/readmissions.csv

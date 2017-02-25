@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/staging/
+cd /data/staging/
 rm exercise_1/loading_and_modeling/*.*
 rmdir exercise_1/loading_and_modeling
 rm exercise_1/*.*
