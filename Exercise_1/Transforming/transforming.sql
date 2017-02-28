@@ -22,17 +22,24 @@ drop table procedures;
 create table procedures as 
 select id, hosp_name, state, measure_id, measure_name, cast(score as decimal) as score from effective_care
 where score != 'Not Available';
+select count(*) from procedures;
 
 drop table no_null_procedures;
 create table no_null_procedures as
 select id, hosp_name, state, measure_id, measure_name, cast(score as decimal) as score from procedures
 where score is not null;
-
 select count(*) from no_null_procedures;
 
 drop table filtered_procedures;
 create table filtered_procedures as
 select * from no_null_procedures
 where state != 'PR' and state != 'VI' and state != 'AS' and state != 'GU' and state != 'MP';
-
 select count(*) from filtered_procedures;
+
+drop table final_procedures;
+create table final_procedures as 
+select * from filtered_procedures 
+where measure_id = 'ED_1b' or measure_id = 'ED_2b' or measure_id = 'OP_1' or
+measure_id = 'OP_3b' or measure_id = 'OP_5' or measure_id = 'OP_18b' or 
+measure_id = 'OP_20' or measure_id = 'OP_21';
+select count(*) from final_procedures;
