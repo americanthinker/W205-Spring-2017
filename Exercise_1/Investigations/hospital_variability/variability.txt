@@ -1,0 +1,9 @@
+1. The toughest part of this piece of the assignment was deciding how to go about measuring variability in procedures and then wrangling the data to create the desired table.
+The actual results were achieved through a single one-liner SQL query.  I started the analysis by deciding to assess procedural variability by using the procedures as described in
+the Timely and Effective Care table.  This table listed 22 distinct procedures which were scored by the Hospital Compare study.  In order to assess procedural variability 
+between hospitals I would have to calculate the standard deviation of the scores grouped by procedure (formally named as measure_id). 
+
+2. An initial review of the data revealed that almost half the values for the "score" measure were listed as "Not Available" and another 4,000+ values were coded as NULL values.
+Therefore, the first step I took was filtering all NA and NULL values from the final table.  Once cleaned I ran a simple stddev function across all scores grouped by the measure_id.
+The final results showed that the procedure with the greatest (absolute) variability between hospitals was the amount of time a patient spent waiting in the ER prior to being 
+admitted as an inpatient at the hospital.  

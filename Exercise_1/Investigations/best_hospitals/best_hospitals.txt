@@ -1,0 +1,23 @@
+1. Finding the best hospitals was a fairly straightforward analysis (if not painstakingly difficult to implement due to unfamiliarity with
+the analytical tools), considering the extensive documentation accompanying the raw data. It was helpful to understand the methodology behind
+how the data was collected and how the accumulated measures were analyzed and ultimately used to provide scores for each hospital. 
+   According to the accompanying documentation the hospitals were given weighted scores across seven different "Measure Categories".  
+Four of the seven categories were given a 22% weight namely the Mortality, Safety, Readmission, and Patient Experience categories.  
+Three of the seven were given a weight of 4% namely Effectiveness of Care, Timeliness of Care and Efficient use of Medical Imaging.  
+The combined weights total 100%.  These seven Measure Categories were combined to give each hospital an overall rating.  The aggregated score
+represented by "Hospital Overall Rating" is where I started my analysis to find the best of the best. 
+
+2. I started by filtering out all hospitals that did not have an overall rating of 5.  Of the 4807 hospitals from the study only 82 achieved this score. 
+Next, given the heavy weighting applied to the four categories of Mortality, Safety, Readmission, and Patient Experience I decided to further filter the remaining 82
+hospitals to only those who scored an "Above the National average" in all four of those categories.  This action reduced the total number of hospitals down to 15.  
+
+3. In order to split ties and whittle the remainder down to ten finalists I looked to the remaining categories (which only received a collective weight of 12% total)
+to break out the winners.  Looking hard at the data at this point, I noticed that a three of the hospitals did not have availalbe data in one or more the categories.
+Therefore, I excluded these three from the final analysis, leaving me with a remainder of 12 finalists.  
+
+4. At this point I would have mapped integer values to each of the three category measures Effectiveness of Care, Timeliness of Care, and Efficient Use of Medical 
+and simply calculated an aggregated and then ranked the hospitals by their final score.  Alas, my Spark SQL skills did not allow me the luxury of performing such 
+an easy way out, and therefore, I calculated the scores by hand assigning a value of 2 for "Above average", 1 for "Same as National average" and 0 for "Below average".
+CITIZENS MEDICAL CENTER from Victoria, Texas was the highest scoring hospital and the only one to score a 5 (two "Above average" values and one "Same as National
+average" value).  CENTEGRA HEALTH SYSTEM - MC HENRY HOSPITAL and MEMORIAL HERMANN HOSPITAL SYSTEM were excluded from the list with scores of 2 and 0 respectively.  
+Theis exclusion from the list brought the total finalist number down to ten. 

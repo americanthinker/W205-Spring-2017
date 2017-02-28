@@ -1,0 +1,28 @@
+1. Drawing from the initial analysis of best hospitals, one might be tempted to use the initial filtered table (named better_hospitals) of 82 hospitals which all had an     
+overall	rating of 5 from which to draw conclusions for which states offer the highest quality medical care.  Indeed, 20% (17 of	82) of the highest scoring hospitals are 
+found in two states alone: Texas and California.  Given	the vibrant economies of both states one might be tempted to end the analysis here by concluding that CA and TX
+are models of high quality medical care.  However, this	is a premature conclusion, which doesn't take into account the status of the other not-so-well-performing 
+hospitals found	within these two populous states.  When overall hospital scores are aggregated across each state a different picture emerges.
+
+2. I first filtered out non-US states such as the Virgin Islands, Guam and American Samoa among others, from the assignment, it looks like we are only interested in 
+US entities. This action brings the distinct number of states to 51, the 51st being the District of Columbia.  Then relying heavily on all of the hard analysis
+already conducted by the Compare Hospitals effort, I simply aggregated hospital overall ratings across each state and computed a final average for each state.  As pointed
+out earlier, the results are very different when all hospitals, both the good and the bad, are taken into account. Texas for instance doesn't make the Top Ten and barely
+makes the Top 20 at #19 on the final ordered list.  California does much worse, at #40.  In absolute terms, by using "hospital overall rating" as the deciding metric,
+South Dakota is #1 (with an overall average score of 3.86), followed by Delaware, Wisconsin, Minnesota, Idaho, Indiana, New Hampshire, Colorado, Utah, with Maine rounding
+out the Top Ten.  
+
+3. However, I'm not convinced that a direct comparison of overall rating scores between states tells the whole story.  Delaware, for instance, which is ranked as #2 on 
+the highest quality list, only has seven hospitals within the entire state, Texas in contrast has 407.  Simliarly, another New England state, New Hampshire, which was
+ranked at #7, has only 26 hospitals.  Without taking away from the quality medical care being delivered at some of the smaller states in the Union, it seems to me that
+one should take into account a state's ability to deliver quality medical care across multiple locations when determining which states are "models" of high-quality care.
+
+4. Therefore, I ran a query that counted all of the hospitals per state and found the median statistic, which in this case was 70 hospitals.  I then reran an average 
+hospital overall rating query grouped by state, but this time only taking into account those states with 70 or more hospitals.  As a result 23 of the 51 states were not
+included in the final analysis due to their relatively small number of hospitals per state.  
+
+5. For states with 70 or more hospitals an interesting regional pattern emerged.  The Midwest, specifically, the northern part of the Midwest, claimed 4 of the Top 5
+spots and 6 of the Top Ten.  Wisconsin, Minnesota, Indiana, and Iowa all made the Top Five list for highest quality medical care for states with 70 or more hospitals. 
+Michigan and Ohio made the Top Ten.  Interestingly enough all of these states border one another, with the state of Illinois being the only bordering state not in the 
+Top Ten (but even so, it's close at #12).  All of the states mentioned have hospitals in the triple digits, indicating a demonstrable ability to deliver quality 
+medical care across a wide area and thereby earning the status of "models of high-quality care".
