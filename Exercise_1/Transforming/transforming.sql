@@ -36,10 +36,28 @@ select * from no_null_procedures
 where state != 'PR' and state != 'VI' and state != 'AS' and state != 'GU' and state != 'MP';
 select count(*) from filtered_procedures;
 
-drop table final_procedures;
-create table final_procedures as 
+drop table time_procedures;
+create table time_procedures as 
 select * from filtered_procedures 
 where measure_id = 'ED_1b' or measure_id = 'ED_2b' or measure_id = 'OP_1' or
 measure_id = 'OP_3b' or measure_id = 'OP_5' or measure_id = 'OP_18b' or 
 measure_id = 'OP_20' or measure_id = 'OP_21';
-select count(*) from final_procedures;
+select count(*) from time_procedures;
+
+drop table percent_procedures;
+create table percent_procedures as
+select * from filtered_procedures
+where measure_id = 'OP_22' or measure_id = 'OP_23' or measure_id = 'OP_29' or
+measure_id = 'OP_30' or measure_id = 'OP_31' or measure_id = 'PC_01';
+select count(*) from percent_procedures;
+
+drop table star_rating;
+create table star_rating as 
+select hospitals.hosp_name, hospitals.hosp_overall_rating, hcahps.hcahps_measure_id, hcahps.patient_survey_star_rating
+from hospitals, hcahps where hospitals.id = hcahps.id;
+
+drop filtered_star_rating;
+create table filtered_star_rating as 
+select * from star_rating
+where hcahps_measure_id = 'H_STAR_RATING' and patient_survey_star_rating != 'Not Available';
+select count(*) from filtered_star_rating; 

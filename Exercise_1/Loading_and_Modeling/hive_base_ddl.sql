@@ -116,7 +116,7 @@ location '/user/w205/hospital_compare/readmissions';
 
 drop table survey_responses;
 create external table survey_responses(
-provider_id string,
+ID string,
 hosp_name string,
 address string,
 city string,
@@ -198,3 +198,38 @@ with serdeproperties(
 )
 stored as textfile
 location '/user/w205/hospital_compare/survey_responses';
+
+drop table hcahps;
+create external table hcahps(
+ID string,
+hosp_name string,
+address string,
+city string,
+state string,
+zip string,
+county string,
+phone_number string,
+hcahps_measure_id string,
+hcahps_question string,
+answer_description string,
+patient_survey_star_rating string,
+patient_survey_footnote string,
+hcahps_answer_percent string,
+answer_percent_footnote string,
+hcahps_linear_mean_value string,
+number_of_completed_surveys string,
+completed_surveys_footnote string,
+survey_response_rate_percent string,
+survey_response_rate_footnote string,
+measure_start_date string,
+measure_end_date string
+)
+row format serde'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties(
+"separatorChar"=",",
+"quoteChar"='"',
+"escapeChar"='\\'
+)
+stored as textfile
+location '/user/w205/hospital_compare/hcahps';
+

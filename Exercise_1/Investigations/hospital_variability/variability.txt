@@ -1,18 +1,39 @@
-1. The toughest part of this piece of the assignment was deciding how to go about measuring variability in procedures and then wrangling the data to create the desired table.
-The actual results were achieved through a single one-liner SQL query.  I started the analysis by deciding to assess procedural variability by using the procedures as described in
-the Timely and Effective Care table.  This table listed 22 distinct procedures which were scored by the Hospital Compare study.  In order to assess procedural variability 
+1. The toughest part of this piece of the assignment was deciding how to measure variability in procedures and then wrangling the data to create the desired table.
+The actual results were achieved through two one-liner SQL queries.  I started the analysis by deciding to assess hospital variability by using the procedures as described in
+the Timely and Effective Care table.  This table lists 22 distinct procedures which were scored by the Hospital Compare study.  In order to assess procedural variability 
 between hospitals I had to calculate the standard deviation of the scores grouped by procedure (formally named as measure_id).  Furthermore, because the measure scores were
-not in the same units of measurement, I chose to focus on those procedures which measured time in minutes as a way of assessing quantifiable differences between hospitals.
-There is no doubt a way to normalize column values using SQL and take variance statistics from those normalized scores, but given the time I had available to me and my current
-state of SQL skills, I had to settle for an incomplete answer. 
+not in the same units of measurement, I chose to split them into two groups, namely those procedures which were scored in minutes and those based on a percentage of patients.
+I have no doubt that there is a way to normalize column values using SQL and take variance statistics from those normalized scores, but given the time I had available to me 
+and my current state of SQL skills, I had to settle for making do with a rough answer. 
 
 2. An initial review of the data revealed that almost half the values for the "score" measure were listed as "Not Available" and another 4,000+ values were coded as NULL values.
 Therefore, the first step I took was filtering all NA and NULL values from the final table.  Next step was filtering out all entities that were not US states (in keeping with
-standard practice from previous query).  Finally, I filterd out all procedures which were not measured in unit of time (specifically minutes) to ensure I got an apples to apples
-comparison when reviewing variance in procedurs. 
+standard practice from previous query).  Finally, I separated out those procedures which were measured in unit of time (minutes) and those measured in percentage of patients.
 
-3. Once cleaned I ran a simple stddev function across all scores grouped by the measure_id.  The final results showed that the procedure with the greatest (absolute) variability
+3. Once cleaned I ran a simple (rounded) stddev function across all scores grouped by the measure_id.  The final results showed that the procedure with the greatest (absolute) variability
 between hospitals was the amount of time a patient spent waiting in the ER prior to being admitted as an inpatient at the hospital.  Waiting times ranged from close to 17 hours
 to 1 hour, with an average of around 4 hours prior to admission.  The procedure with the least variability among hospitals was the median number of minutes before a patient
 who presented with chest pain or possible heart attack received an echocardiogram (ECG).  Scores ranged from 56 minutes to 0 minutes with an average of 8 minutes.  This finding
-is not surprising given the modern standardized protocol of ensuring all patients presenting with chest pain are quickly triaged for potential heart attack. 
+is not surprising given the modern standardized protocol of ensuring all patients presenting with chest pain are quickly triaged for a potential heart attack. 
+
+Time-based Variability in ranked order (in minutes):
+ED_1b   94.0
+ED_2b   63.0
+OP_18b  43.0
+OP_3b   32.0
+OP_20   18.0
+OP_21   18.0
+OP_1    12.0
+OP_5    5.0
+
+4. The greatest variability between hospitals in terms of affected percentages of patients was cataract surgery.  Scores ranged from 100 percent of patients who had improvement
+in visual function within 90 days of their cataract surgery to 0 percent.  Average value was 85 percent of patients.  The procedure with the least variability was the percentage
+of patients who left the Emergency Room without being seen.  Scores range from 29 percent down to 0 with an average of 1.79 percent.  
+
+Percent-based Variability in ranked order (in percentages of patients):
+OP_31   29.0                                                                    
+OP_29	25.0
+OP_23	20.0
+OP_30	19.0
+PC_01	4.0
+OP_22	2.0

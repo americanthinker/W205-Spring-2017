@@ -1,0 +1,17 @@
+1. This final task took a great deal of time because I ended up having to add another csv file to the mix in order to get a decent measure against which 
+I could correlate the Hospital Overall Rating as described in the hospitals.csv file.  After reviewing the accompanying documentation, I discoved that 
+the makers of the HCAHPS survey agreggated the patient responses into one overarching statistic called the "Hospital Star Rating" by which consumsers could
+use the resultant number to make apples to apples comparisons among hospitals.  I decided to use this statistic as a value against which to determine 
+correlation with the Hospital Overall Rating as measured by the seven measures as described in the Hospital Compare study.  
+
+2. I had to go back and reload the hcahps survey results into the HDFS date lake.  I then had to build a table just like all of the previous files.  I then
+created a new table by joining Hospital Name and Overall Rating from the hospitals table with HCAHPS Measure ID and Patient Survey STAR RATING joined on ID (which 
+was the Primary Key for both tables).  Once acccomplished I created a new table by filtering out only the HCAHPS Measure ID which was labeled as 
+"H_STAR_RATING".  H_STAR_RATING was the key measure that I was looking for.  The survey had several other star ratings included in the survey results, but 
+only the H_STAR_RATING represented the aggregated summary of the entire survey for each hospital.  I further filterd the table to remove any "Not Available"
+results in the Patient Survey Star Rating results (should have been a decimal betwen 1 and 5).
+
+3. Finally I used a one liner SQL statement to determine correlation between Overall Hospital Rating (1-5) and Patient Survey Star Rating (1-5).  The results
+showed that indeed the scores for hospital quality are moderately correlated with patient survey responses (r = .61).  This is a promising finding for 
+the creators of the Hospital Compare sutdy.  It would be a shame to find uncorrleated results after all the time and effort went into trying to give
+consumers a decent tool for hospital comparisons.
