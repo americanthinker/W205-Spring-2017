@@ -1,0 +1,29 @@
+Lab 9: Neo4j
+
+1. There is one edge between Dr. Doom and Dr. Strange.
+
+2. Five shortest paths between the two of the them:
+	a. They both appeared together
+	b. Dr. Strange appeared with Devos the Devastator who in turn appeared with Dr. Doom
+	c. Dr. Strange appeared with Balder the Asgardian who in turn appeared with Dr. Doom
+	d. Dr. Strange appeared with Silver Surfer who in turn appeared with Dr. Doom
+	e. Dr. Strange appeared with Eternity who in turn appeared with Dr. Doom
+
+3. Top Five friends of friends with Colossus II:
+	1. Wong 453
+	2. Moonstone 370
+	3. Peggy Carter 367
+	4. Power Man 350
+	5. Kingpin 342
+
+4. See associated .png file.
+
+5. The Avengers grew by adding the following members in order:
+	Ant Man (Total #: 6)
+	Wonder Man (Total #: 7)
+	Hawk (Total #: 8)
+	Tony Stark was replaced by James R. (still used Iron Man suit, (Total #: 8))
+	Edwin Jarvis (Total #: 9)
+	Mr. Fantastic (Total #: 10)
+    The graph remains fully connected throughout my search.  However, search queries with larger parameters could reveal eventual disconnects.
+	
