@@ -2,7 +2,8 @@ from __future__ import absolute_import, print_function, unicode_literals
 
 from collections import Counter
 from streamparse.bolt import Bolt
-
+import psycopg2
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
 class WordCounter(Bolt):
@@ -12,12 +13,15 @@ class WordCounter(Bolt):
 
     def process(self, tup):
         word = tup.values[0]
-
-        # Write codes to increment the word count in Postgres
-        # Use psycopg to interact with Postgres
+        conn = psycopg2.connect(database = "testcount", user = "postgres")
+	conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+	cur = conn.cursor()
+	cur.execute("UPDATE testwordcount set counts = counts + 1 where words = %s", (word,))
+	cur.execute("INSERT INTO testwordcount (words, counts) \
+		     SELECT %s, 1 WHERE NOT EXISTS (SELECT * FROM testwordcount WHERE words = %s)", (word, word))
+	
         # Database name: Tcount 
-        # Table name: Tweetwordcount 
-        # you need to create both the database and the table in advance.
+        # Table name: Tweetwordcount
         
 
         # Increment the local count
