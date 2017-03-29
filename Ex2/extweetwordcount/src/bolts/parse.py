@@ -34,10 +34,10 @@ class ParseTweet(Bolt):
             if word.startswith("http"): continue
 
             # Strip leading and lagging punctuations
-            aword = word.strip("1234567890&\"?><,'.:;)").lower()
+            aword = word.strip("{}[]1234567890-=!@#$%^&*\(\)_+';\":/.,?><|\\").lower()
 
             # now check if the word contains only ascii
-            if len(aword) > 0 and ascii_string(word):
+            if len(aword) > 0 and ascii_string(word) and aword.isalpha():
                 valid_words.append([aword])
 
         if not valid_words: return

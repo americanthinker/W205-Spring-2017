@@ -43,7 +43,7 @@ class TweetStreamListener(tweepy.StreamListener):
 class Tweets(Spout):
 
     def initialize(self, stormconf, context):
-        self._queue = Queue.Queue(maxsize = 100)
+        self._queue = Queue.Queue(maxsize = 0)
 
         consumer_key = auth_get("consumer_key") 
         consumer_secret = auth_get("consumer_secret") 
@@ -78,7 +78,7 @@ class Tweets(Spout):
  
         except Queue.Empty:
             self.log("Empty queue exception ")
-            time.sleep(0.1) 
+            time.sleep(0.5) 
 
     def ack(self, tup_id):
         pass  # if a tuple is processed properly, do nothing
