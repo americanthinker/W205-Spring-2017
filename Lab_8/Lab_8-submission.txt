@@ -1,0 +1,20 @@
+
+LAB 8 Submission
+
+1. There are 5377 rows with missing values in the State column.  This was easy to find
+because there was a “blank” label/selection at the bottom of the list of states.  
+
+2. We’ve got 4,362 rows that are missing ZIP code values.
+
+3. If all ZIP codes less than 99999 are considered as valid then we have 380,136 of them. 
+The only invalid ones are those cells which are blank, of which we have 4,361.
+
+4. Changing the radius to 3.0 expands the clustering mechanism to include other similarly 
+labeled locations.  I found a happy medium at radius 3.0 and Block Characters 4.0.  Those
+parameters hit a good cross between including similarly spelled words, without going 
+overboard.
+
+5. I ended up merging variations on Alaska, California, and Canada.
+
+6. See attached picture of Levenshtein distance calculation completed in Excel.  Attached 
+PythonLevenshtein.png also confirms the correct answer using the Levenshtein module in Python.
