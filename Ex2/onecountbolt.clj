@@ -22,10 +22,10 @@
           )
      "count-bolt" (python-bolt-spec
           options
-          {"parse-tweet-bolt" ["word"]}
+          {"parse-tweet-bolt" :all}
           "bolts.wordcount.WordCounter"
-          ["word" "count"]
-          :p 2
+          ["word", "self.counts[word]"]
+          :p 1
           )
     }
   ]
