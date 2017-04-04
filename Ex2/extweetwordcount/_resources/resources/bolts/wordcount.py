@@ -13,13 +13,17 @@ class WordCounter(Bolt):
 
     def process(self, tup):
         word = tup.values[0]
-        conn = psycopg2.connect(database = "tcount", user = "postgres")
+        conn = psycopg2.connect(database = "testcount", user = "postgres")
 	conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 	cur = conn.cursor()
-	cur.execute("UPDATE tweetwordcount set counts = counts + 1 where words = %s", (word,))
-	cur.execute("INSERT INTO tweetwordcount (words, counts) \
-		     SELECT %s, 1 WHERE NOT EXISTS (SELECT * FROM tweetwordcount WHERE words = %s)", (word, word))
+	cur.execute("UPDATE testwordcount set counts = counts + 1 where words = %s", (word,))
+	cur.execute("INSERT INTO testwordcount (words, counts) \
+		     SELECT %s, 1 WHERE NOT EXISTS (SELECT * FROM testwordcount WHERE words = %s)", (word, word))
 	
+        # Database name: Tcount 
+        # Table name: Tweetwordcount
+        
+
         # Increment the local count
         self.counts[word] += 1
         self.emit([word, self.counts[word]])
