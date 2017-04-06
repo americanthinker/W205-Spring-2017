@@ -1,11 +1,14 @@
 This guide is a step-by-step instruction on how to run the Twitter Word Count application.
 
 ** This guide makes the following assumptions **
-   - You are running the application from the UC Berkeley AMI ID: ami-d4dd4ec3 as found on AWS
-   - You are running the application as the "root" user
+   - You are running the application from the UC Berkeley AMI ID: ami-d4dd4ec3 as found on AWS.  This AMI has all required dependencies required to run the Twitter Wordcount application.
+   - You are running the application as the "root" user.
+   - You are using the scripts and files as found in my github repository.
 
 1. Start your EC2 instance using the aforementioned UC Berkeley AMI.
-2. Execute the TwitterStartup.py file.  This file will run the following tasks:
+2. Enter the following at the commmand line:
+   - git clone git@github.com:americanthinker/W205-Spring-2017.git  (assumes you are using SSH and not HTTPS)
+3. Change directory into Exercise 2 and then execute the TwitterStartup.py file.  This file will run the following tasks:
    - Imports the subprocess and os modules from the Python standard library.  These modules enable
      the user to run unix/linux command line arguments from a Python script.
    - Mounts the EBS disk to the /data directory of your EC2 instance
