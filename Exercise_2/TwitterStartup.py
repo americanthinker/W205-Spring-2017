@@ -3,7 +3,7 @@ import subprocess
 from time import sleep
 
 subprocess.call(['mount', '-t', 'ext4', '/dev/xvdf', '/data'])
-os.chdir('../data')
+os.chdir('/data')
 subprocess.call(['./start_postgres.sh'])
 sleep(3)
 
