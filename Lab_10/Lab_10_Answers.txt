@@ -1,0 +1,23 @@
+LAB 10 SUBMISSIONS
+
+1. bigwords = lines.filter(lambda word: len(word) > 5)
+   bigwords.pprint()
+
+2. lines = ssc.textFileStream("file:///Users/americanthinker/Documents/Berkeley/Spring_2017/W205/w204-labs-exercises/lab_10”)
+slines = lines.flatMap(lambda x: [ j['venue'] for j in json.loads('['+x+']') if 'venue' in j] )
+cnt=slines.count()
+cnt.pprint()
+slines.pprint()
+slines.saveAsTextFiles("file:///Users/americanthinker/Documents/Berkeley/Spring_2017/W205/w204-labs-exercises/lab_10/venue.txt") 
+
+3. One perhaps (overly) simple way of addressing the burstiness problem with streaming data would be to cache
+the incoming data in a separate storage container, until the process normalizes.  Upon normalization, the program
+could be tuned to automatically process the cached data.  If Kafka is a part of your pipeline (though this is an area that I am not familiar with because I have no experience with Kafka), it’s my understanding that you can tune certain parameters in Kafka to adjust it’s retention period.  Presumably this will allow you to control for
+bursting depending on your level of “burst tolerance”.  Finally, one could introduce a filter that would presumably reduce the level of incoming data, thus mitigating against burstiness.  This solution only works, however, if you are willing to lose a given percentage of incoming data. 
+
+4a. See associated png file.
+
+4b. The difference between a 10 sec batch length with a 30 sec sliding window against a 30 sec batch length, is a 
+simple matter of batch interval.  In the first example, data is processed in 10 second increments, with an aggregated result being processed every 30 seconds.  In the second example, instead of batch processing every 10
+seconds, the duration interval is 30 seconds. The first example provides a better update in “real time” to the 
+end user, with the functionality of data aggregation at a set period of time.  
